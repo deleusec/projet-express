@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+
+    <p>Nombre d'essais restant: <%= numberOfTry  %></p>
+
+    <form action="/" method="post">
+        <div>
+            <label for="word">Entrez une lettre</label>
+            <input type="text" name="word">
+        </div>
+
+        <input type="submit" value="Envoyer">
+    </form>
+
+    <% if(game) { %>
+        <p><%= game %></p>
+    <% } %>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>
