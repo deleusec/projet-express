@@ -1,0 +1,61 @@
+.cd-c-Main{
+  padding-top: 25px;
+  padding-bottom: 25px;
+  &-title {
+    text-align: center;
+    padding: 25px 0;
+  }
+
+  &-tries {
+    padding-bottom: 15px;
+    font-size: 18px;
+
+    span {
+      color: $color_green;
+      font-size: 25px;
+    }
+  }
+
+  &-hiddenWord {
+    letter-spacing: 1em;
+    text-align: center;
+    padding: 25px 0 50px;
+  }
+
+  &-letters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    margin: auto;
+  }
+
+  &-letter {
+    font-family: sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+
+    color: $color_lightgreen;
+    background: none;
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+    outline: inherit;
+
+    transition: 200ms ease-in-out;
+
+    &:hover {
+      color: $color_green;
+      transition: 200ms ease-in-out;
+    }
+
+    &:last-child {
+      margin-right: auto;
+    }
+
+  }
+}

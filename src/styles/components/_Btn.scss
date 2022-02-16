@@ -1,0 +1,24 @@
+.cd-c-Btn {
+  font-family: sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+
+  padding: 10px 30px;
+  min-height: 50px;
+
+  color: $color_white;
+  background: $color_green;
+  border: 1px solid $color_green;
+
+  cursor: pointer;
+  outline: inherit;
+  transition: 200ms cubic-bezier(.59,.44,.52,.95);
+
+  &:hover {
+    background: none;
+    border: 1px solid $color_green;
+    box-sizing: border-box;
+    transition: 200ms cubic-bezier(.59,.44,.52,.95);
+  }
+}

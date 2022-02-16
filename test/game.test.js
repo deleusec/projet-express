@@ -25,15 +25,16 @@ describe("Game Test", function() {
         assert.equal(game.getNumberOfTry(), 4);
     });
 
+    it('when i guess a letter the unknow word should be updated with the right letter', function () {
+        game.word = "damien";
+        game.guess("a");
+        assert.equal(game.print(), "_a____")
+    });
+
     it("reset the game, so the number of try should be 5", function() {
         game.reset();
         assert.equal(game.getNumberOfTry(), 5)
     });
 
 
-
-    it('when i guess a letter the unknow word should be updated with the right letter', function () {
-        game.guess("a");
-        assert.equal(game.print(), "_a____")
-    });
 });

@@ -23,8 +23,8 @@ class Game {
     }
 
     chooseWord() {
-        this.hideWord()
         this.word = this.words[tools.getRamdomInt(this.words.length)]
+        this.hideWord()
     }
 
     hideWord() {

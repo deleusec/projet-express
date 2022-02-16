@@ -1,7 +1,8 @@
 require('dotenv').config();
 const express = require('express');
-const bodyParser = require('body-parser');
 const path = require('path');
+
+const bodyParser = require('body-parser');
 const Game = require("./src/scripts/game");
 
 const PORT = process.env.PORT;
@@ -11,16 +12,16 @@ const game = new Game();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
-app.use(express.static(path.join(__dirname,'public')));
+app.use('/assets',express.static(path.join(__dirname,'public')));
 app.set('view engine', 'ejs');
 app.listen(PORT, () => console.log(`Listening on http://localhost:${ PORT }`));
 
 app.get('/', (request, response) => {
-    response.render('pages/index', { game : undefined, numberOfTry: game.getNumberOfTry() });
+    response.render('index', { game : undefined, numberOfTry: game.getNumberOfTry() });
 })
 
 app.post('/',(request, response) => {
-    console.log(request.body);
+    console.log(request.body.word);
 
     if(request.body.reset){
         console.log("Reset !")
@@ -29,5 +30,5 @@ app.post('/',(request, response) => {
         let guess = game.guess(request.body.word)
         console.log("Guess :" + guess)
     }
-    response.render('pages/index', {game: game.print(), numberOfTry: game.getNumberOfTry()});
+    response.render('index', {game: game.print(), numberOfTry: game.getNumberOfTry()});
 })
