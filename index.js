@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 app.listen(PORT, () => console.log(`Listening on http://localhost:${ PORT }`));
 
 app.get('/', (request, response) => {
-    response.render('index', { game : undefined, numberOfTry: game.getNumberOfTry() });
+    response.render('index', { game : undefined, numberOfTry: game.getNumberOfTry(), knowWord : undefined });
 })
 
 app.post('/',(request, response) => {
@@ -30,5 +30,5 @@ app.post('/',(request, response) => {
         let guess = game.guess(request.body.word)
         console.log("Guess :" + guess)
     }
-    response.render('index', {game: game.print(), numberOfTry: game.getNumberOfTry()});
+    response.render('index', {game: game.print(), numberOfTry: game.getNumberOfTry(), knowWord : game.getWord() });
 })

@@ -8,6 +8,9 @@
 
     <main class="cd-c-Main cd-u-hspace">
         <div class="cd-u-wrapper">
+            <% if(knowWord) { %>
+                <p><%= knowWord %></p>
+            <% } %>
             <p class="cd-c-Main-tries">You have <span><%= numberOfTry  %></span> tries left</p>
 
             <% if(game) { %>

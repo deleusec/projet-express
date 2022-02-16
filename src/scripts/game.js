@@ -24,11 +24,20 @@ class Game {
 
     chooseWord() {
         this.word = this.words[tools.getRamdomInt(this.words.length)]
+        this.getWord()
         this.hideWord()
     }
 
     hideWord() {
         this.unknowWord = this.word.replace(/./g, '_')
+    }
+
+    getWord() {
+        return this.word;
+    }
+
+    getNumberOfTry() {
+        return this.numberOfTry;
     }
 
     print() {
@@ -42,10 +51,6 @@ class Game {
         }
         this.numberOfTry--;
         return false
-    }
-
-    getNumberOfTry() {
-        return this.numberOfTry;
     }
 
     reset() {
