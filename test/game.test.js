@@ -1,13 +1,16 @@
-const Game = require('../game.js');
+const Game = require('../src/scripts/game');
 const assert = require('assert').strict;
 
 let game = new Game();
+game.word = "damien";
 
 describe("Game Test", function() {
 
-    it("should show only 'x' letter", function() {
-        assert.equal(game.print(), "xxxxxx");
+    it("should show only '_' character", function() {
+        game.hideWord();
+        assert.equal(game.print(), "______");
     });
+    
     it("should be 5 try at the beginning of the game", function() {
         assert.equal(game.getNumberOfTry(), 5);
     });
@@ -28,8 +31,9 @@ describe("Game Test", function() {
     });
 
 
+
     it('when i guess a letter the unknow word should be updated with the right letter', function () {
         game.guess("a");
-        assert.equal(game.print(), "xaxxxx")
+        assert.equal(game.print(), "_a____")
     });
 });

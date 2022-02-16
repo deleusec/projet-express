@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const Game = require("./game");
+const Game = require("./src/scripts/game");
 
 const PORT = process.env.PORT;
 
@@ -10,7 +10,7 @@ const app = express();
 const game = new Game();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extented : true }));
+app.use(bodyParser.urlencoded({ extended : true }));
 app.use(express.static(path.join(__dirname,'public')));
 app.set('view engine', 'ejs');
 app.listen(PORT, () => console.log(`Listening on http://localhost:${ PORT }`));
@@ -20,7 +20,14 @@ app.get('/', (request, response) => {
 })
 
 app.post('/',(request, response) => {
-    console.log(request.body.word);
-    console.log(game.guess(request.body.word));
+    console.log(request.body);
+
+    if(request.body.reset){
+        console.log("Reset !")
+        game.reset();
+    }else{
+        let guess = game.guess(request.body.word)
+        console.log("Guess :" + guess)
+    }
     response.render('pages/index', {game: game.print(), numberOfTry: game.getNumberOfTry()});
 })
