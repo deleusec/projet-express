@@ -135,6 +135,8 @@ body {
     .cd-c-Main-letter:hover {
       color: #38dc8a;
       transition: 200ms ease-in-out; }
+    .cd-c-Main-letter:disabled {
+      color: #7e7e7e; }
     .cd-c-Main-letter:last-child {
       margin-right: auto; }
 

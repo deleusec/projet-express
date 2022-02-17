@@ -15,6 +15,13 @@ describe("Game Test", function() {
         assert.equal(game.getWord(), "damien");
     });
 
+    it("Save letters already tried", function() {
+        game.guess('a')
+        let result = ['a']
+        assert.deepEqual(game.getLettersTried(), result);
+    });
+
+
     it('when i guess a letter the unknow word should be updated with the right letter', function () {
         game.guess("a");
         assert.equal(game.print(), "_a____")

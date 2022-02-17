@@ -23,7 +23,14 @@
                 <div class="cd-c-Main-letters">
                     <% alphabet.forEach( element => {%>
                         <% let word = element %>
-                        <button type="submit" class="cd-c-Main-letter" name="word" value="<%= word %>"><%= element %></button>
+                        <button
+                        type="submit"
+                        class="cd-c-Main-letter"
+                        <% if(lettersTried.includes(word)) { %> disabled<% } %>
+                        name="word"
+                        value="<%= word %>">
+                            <%= element %>
+                        </button>
                     <% }) %>
                 </div>
 

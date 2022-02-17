@@ -6,6 +6,7 @@ class Game {
 
     constructor() {
         this.words = [];
+        this.lettersTried = [];
         this.numberOfTry = 5;
 
         fs.createReadStream('./src/files/words_fr.txt')
@@ -36,6 +37,10 @@ class Game {
         return this.word;
     }
 
+    getLettersTried() {
+        return this.lettersTried;
+    }
+
     getNumberOfTry() {
         return this.numberOfTry;
     }
@@ -45,6 +50,7 @@ class Game {
     }
 
     guess(oneLetter) {
+        this.lettersTried.push(oneLetter);
         if(this.word.includes(oneLetter)) {
             this.unknowWord = tools.replaceAt(this.unknowWord, this.word.indexOf(oneLetter), oneLetter);
             return true
@@ -55,6 +61,7 @@ class Game {
 
     reset() {
         this.numberOfTry = 5;
+        this.lettersTried = [];
         this.chooseWord();
         return this.numberOfTry;
     }

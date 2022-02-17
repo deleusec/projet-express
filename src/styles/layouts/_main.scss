@@ -53,6 +53,10 @@
       transition: 200ms ease-in-out;
     }
 
+    &:disabled {
+      color: $color_grey;
+    }
+
     &:last-child {
       margin-right: auto;
     }
