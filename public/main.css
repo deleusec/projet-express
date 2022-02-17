@@ -90,7 +90,7 @@ body {
 
 /* LAYOUTS */
 .cd-c-Header {
-  padding-top: 25px;
+  padding-top: 60px;
   padding-bottom: 25px; }
   .cd-c-Header-title {
     text-align: center; }
@@ -112,12 +112,16 @@ body {
   .cd-c-Main-hiddenWord {
     letter-spacing: 1em;
     text-align: center;
-    padding: 25px 0 50px; }
+    padding: 50px 0;
+    font-size: 18px;
+    text-transform: uppercase; }
   .cd-c-Main-letters {
+    padding: 40px;
+    margin: 25px auto;
+    border: 1px solid #38dc8a;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin: auto; }
+    justify-content: space-between; }
   .cd-c-Main-letter {
     font-family: sans-serif;
     font-size: 30px;
@@ -139,7 +143,3 @@ body {
       color: #7e7e7e; }
     .cd-c-Main-letter:last-child {
       margin-right: auto; }
-
-.cd-c-Footer {
-  padding-top: 25px;
-  padding-bottom: 25px; }

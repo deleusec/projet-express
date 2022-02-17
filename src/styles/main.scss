@@ -7,8 +7,6 @@
 
 /* COMPONENTS */
 @import "components/Btn";
-@import "components/Field";
-@import "components/Letters";
 
 /* COMPONENTS */
 @import "utils/hspace";
@@ -17,5 +15,5 @@
 
 /* LAYOUTS */
 @import "layouts/header";
-@import "layouts/main";
+@import "layouts/content";
 @import "layouts/footer";

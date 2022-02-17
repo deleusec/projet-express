@@ -1,47 +1,12 @@
 <!doctype html>
 <html lang="en">
 <%- include('./_partials/head') %>
-<body>
+<body class="cd-u-hspace">
     <%- include('./_partials/header') %>
 
-    <% const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]; %>
-
-    <main class="cd-c-Main cd-u-hspace">
-        <div class="cd-u-wrapper">
-            <% if(knowWord) { %>
-                <p><%= knowWord %></p>
-            <% } %>
-            <p class="cd-c-Main-tries">You have <span><%= numberOfTry  %></span> tries left</p>
-
-            <% if(game) { %>
-                <p class="cd-c-Main-hiddenWord"><%= game %></p>
-            <% } %>
-
-            <form action="/" method="post">
-
-
-                <div class="cd-c-Main-letters">
-                    <% alphabet.forEach( element => {%>
-                        <% let word = element %>
-                        <button
-                        type="submit"
-                        class="cd-c-Main-letter"
-                        <% if(lettersTried.includes(word)) { %> disabled<% } %>
-                        name="word"
-                        value="<%= word %>">
-                            <%= word %>
-                        </button>
-                    <% }) %>
-                </div>
-
-                <div class="cd-c-Main-FormField">
-                    <button class="cd-c-Btn" type="submit" name="reset" value="true">Reset</button>
-                </div>
-
-            </form>
-
-        </div>
-    </main>
+    <section class="cd-c-Content">
+        <%- include('./_partials/game') %>
+    </section>
 
     <%- include('_partials/footer') %>
 </body>
