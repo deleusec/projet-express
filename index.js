@@ -15,8 +15,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
 app.use(
     sassMiddleware({
-        src: __dirname + '/src/styles/main.scss', //where the sass files are
-        dest: path.join(__dirname,'public'), //where css should go
+        src: __dirname + '/src/styles', //where the sass files are
+        dest: __dirname + '/public', //where css should go
         debug: true ,// obvious
         prefix:  '/assets',
     }));
