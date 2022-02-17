@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 
+const sassMiddleware = require('node-sass-middleware');
 const bodyParser = require('body-parser');
 const Game = require("./src/scripts/game");
 
@@ -12,6 +13,13 @@ const game = new Game();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
+app.use(
+    sassMiddleware({
+        src: __dirname + '/src/styles', //where the sass files are
+        dest: __dirname + '/public', //where css should go
+        debug: true ,// obvious
+        prefix:  '/assets',
+    }));
 app.use('/assets',express.static(path.join(__dirname,'public')));
 app.set('view engine', 'ejs');
 app.listen(PORT, () => console.log(`Listening on http://localhost:${ PORT }`));
@@ -29,8 +37,7 @@ app.post('/',(request, response) => {
     console.log(request.body.word);
 
     if(request.body.reset){
-        console.log("Reset !")
-        game.reset();
+        game.newGame();
     }else{
         let guess = game.guess(request.body.word)
         console.log("Guess :" + guess)
