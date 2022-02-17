@@ -1,13 +1,9 @@
 <% const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]; %>
 
-<div class="cd-c-Game cd-u-hspace">
+<div class="cd-c-Game">
     <div class="cd-u-wrapper">
-
-        <% if(knowWord) { %>
-            <p><%= knowWord %></p>
-        <% } %>
-
         <p class="cd-c-Game-tries">You have <span><%= numberOfTry  %></span> tries left</p>
+
         <div class="cd-c-Game-score">Score : <%= score  %></div>
 
         <% if(game) { %>

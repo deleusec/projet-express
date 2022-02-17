@@ -40,7 +40,13 @@
   &-score {
     display: block;
     background: $color_green;
-    padding: 10px 20px;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    line-height: 30px;
+
+    font-size: 20px;
+    text-transform: uppercase;
+
     position: absolute;
     top: 20px;
     right: 20px;

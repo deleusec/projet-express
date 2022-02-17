@@ -19,3 +19,16 @@
 .cd-u-h4,h4 {
   font-size: 14px;
 }
+
+@media screen and (max-width: 999px) {
+  .cd-u-h1,h1 {
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .cd-u-h2,h2 {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+}

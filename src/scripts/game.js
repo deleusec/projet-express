@@ -2,7 +2,7 @@ const tools = require('./tools');
 const csvParser = require('csv-parser');
 const fs = require('fs');
 
-const numberOfTry = 5;
+const numberOfTry = 10;
 
 class Game {
 

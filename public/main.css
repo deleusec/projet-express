@@ -93,7 +93,11 @@ body {
 .cd-c-Game-score {
   display: block;
   background: #38dc8a;
-  padding: 10px 20px;
+  padding: 10px 30px;
+  box-sizing: border-box;
+  line-height: 30px;
+  font-size: 20px;
+  text-transform: uppercase;
   position: absolute;
   top: 20px;
   right: 20px; }
@@ -128,12 +132,27 @@ body {
   .cd-c-Game-letter:last-child {
     margin-right: auto; }
 
+.cd-c-GameStart-box {
+  padding: 40px;
+  max-width: 600px;
+  box-sizing: border-box;
+  border: 1px solid #38dc8a;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.cd-c-GameStart-text {
+  margin-bottom: 40px;
+  text-align: center; }
+
 /* COMPONENTS */
 .cd-u-hspace {
   padding: 0 25px; }
 
 .cd-u-wrapper {
   max-width: 800px;
+  width: 100%;
   margin: auto; }
 
 .cd-u-h1, h1 {
@@ -154,6 +173,14 @@ body {
 .cd-u-h4, h4 {
   font-size: 14px; }
 
+@media screen and (max-width: 999px) {
+  .cd-u-h1, h1 {
+    font-size: 25px;
+    line-height: 30px; }
+  .cd-u-h2, h2 {
+    font-size: 14px;
+    line-height: 18px; } }
+
 /* LAYOUTS */
 .cd-c-Header {
   padding-top: 60px;
@@ -164,5 +191,4 @@ body {
     text-align: center; }
 
 .cd-c-Content {
-  padding-top: 50px;
-  padding-bottom: 50px; }
+  padding-top: 50px; }
