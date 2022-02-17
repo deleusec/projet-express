@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "sass" : "node-sass src/styles/main.scss public/main.css -w",
+    "sass": "node-sass src/styles/main.scss public/main.css -w",
     "test": "mocha"
   },
   "repository": {
@@ -26,6 +26,7 @@
     "express": "^4.17.2",
     "mocha": "^9.2.0",
     "node-sass": "^7.0.1",
+    "node-sass-middleware": "^1.0.1",
     "sass": "^1.49.7"
   },
   "devDependencies": {

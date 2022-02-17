@@ -63,7 +63,7 @@ class Game {
         return false
     }
 
-    reset() {
+    newGame() {
         this.numberOfTry = 5;
         this.lettersTried = [];
         this.chooseWord();
