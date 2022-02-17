@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "sass": "node-sass src/styles/main.scss public/main.css -w",
     "test": "mocha"
   },
   "repository": {

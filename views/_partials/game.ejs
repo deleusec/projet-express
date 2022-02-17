@@ -1,6 +1,6 @@
 <% const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]; %>
 
-<main class="cd-c-Game cd-u-hspace">
+<div class="cd-c-Game cd-u-hspace">
     <div class="cd-u-wrapper">
 
         <% if(knowWord) { %>
@@ -8,6 +8,7 @@
         <% } %>
 
         <p class="cd-c-Game-tries">You have <span><%= numberOfTry  %></span> tries left</p>
+        <div class="cd-c-Game-score">Score : <%= score  %></div>
 
         <% if(game) { %>
             <p class="cd-c-Game-hiddenWord"><%= game %></p>
@@ -18,23 +19,24 @@
 
             <div class="cd-c-Game-letters">
                 <% alphabet.forEach( element => {%>
-                    <% let word = element %>
+                    <% let letter = element %>
                     <button
                             type="submit"
                             class="cd-c-Game-letter"
-                    <% if(lettersTried.includes(word)) { %> disabled<% } %>
+                    <% if(lettersTried.includes(letter)) { %> disabled<% } %>
                             name="word"
-                            value="<%= word %>">
-                        <%= word %>
+                            value="<%= letter %>">
+                        <%= letter %>
                     </button>
                 <% }) %>
             </div>
 
-            <div class="cd-c-Game-formField">
+            <div class="cd-c-Game-buttons">
                 <button class="cd-c-Btn" type="submit" name="reset" value="true">Reset</button>
+                <button class="cd-c-Btn" type="submit" name="leave" value="true" cd-leave>Leave</button>
             </div>
 
         </form>
 
     </div>
-</main>
+</div>

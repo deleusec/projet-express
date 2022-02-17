@@ -2,12 +2,16 @@ const tools = require('./tools');
 const csvParser = require('csv-parser');
 const fs = require('fs');
 
+const numberOfTry = 5;
+
 class Game {
 
     constructor() {
         this.words = [];
+        this.scorePlayer = 0;
         this.lettersTried = [];
-        this.numberOfTry = 5;
+        this.numberOfTry = numberOfTry;
+        this.inGame = false;
 
         fs.createReadStream('./src/files/words_fr.txt')
         .on('error', () => {
@@ -45,6 +49,14 @@ class Game {
         return this.numberOfTry;
     }
 
+    getScorePlayer() {
+        return this.scorePlayer;
+    }
+
+    getGameStatus() {
+        return this.inGame;
+    }
+
     print() {
         return this.unknowWord;
     }
@@ -57,17 +69,35 @@ class Game {
                     this.unknowWord = tools.replaceAt(this.unknowWord, this.word.indexOf(oneLetter,i), oneLetter);
                 }
             }
+            if(this.unknowWord === this.word){
+                this.scorePlayer++;
+                this.reset();
+            }
             return true
         }
         this.numberOfTry--;
+        if (this.numberOfTry <= 0) {
+            this.reset();
+        }
         return false
     }
 
-    newGame() {
-        this.numberOfTry = 5;
+    reset() {
+        this.numberOfTry = numberOfTry;
         this.lettersTried = [];
         this.chooseWord();
         return this.numberOfTry;
+    }
+
+    start() {
+        this.inGame = true;
+        this.reset();
+    }
+
+    leave() {
+        this.inGame = false;
+        this.reset();
+        this.scorePlayer = 0;
     }
 }
 

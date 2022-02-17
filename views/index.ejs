@@ -5,7 +5,11 @@
     <%- include('./_partials/header') %>
 
     <section class="cd-c-Content">
+        <% if (inGame) { %>
         <%- include('./_partials/game') %>
+        <% } else {%>
+        <%- include('./_partials/game_start') %>
+        <% } %>
     </section>
 
     <%- include('_partials/footer') %>

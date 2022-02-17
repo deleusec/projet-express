@@ -21,6 +21,30 @@
     font-size: 18px;
     text-transform: uppercase;
   }
+  
+  &-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    & [cd-leave] {
+      border: 1px solid $color_red;
+      background: $color_red;
+
+      &:hover {
+        background: none;
+      }
+    }
+  }
+
+  &-score {
+    display: block;
+    background: $color_green;
+    padding: 10px 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
 
   &-letters {
     padding: 40px;

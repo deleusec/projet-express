@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-
 const sassMiddleware = require('node-sass-middleware');
 const bodyParser = require('body-parser');
 const Game = require("./src/scripts/game");
@@ -27,6 +26,8 @@ app.listen(PORT, () => console.log(`Listening on http://localhost:${ PORT }`));
 app.get('/', (request, response) => {
     response.render('index', {
         game : undefined,
+        inGame : false,
+        score : game.getScorePlayer(),
         numberOfTry: game.getNumberOfTry(),
         knowWord : undefined,
         lettersTried : game.getLettersTried()
@@ -34,16 +35,21 @@ app.get('/', (request, response) => {
 })
 
 app.post('/',(request, response) => {
-    console.log(request.body.word);
 
-    if(request.body.reset){
-        game.newGame();
-    }else{
-        let guess = game.guess(request.body.word)
-        console.log("Guess :" + guess)
+    if(request.body.start){
+        game.start();
+    } else if (request.body.reset){
+        game.reset();
+    } else if (request.body.leave) {
+        game.leave();
+    } else {
+        game.guess(request.body.word)
     }
+
     response.render('index', {
         game: game.print(),
+        inGame : game.getGameStatus(),
+        score : game.getScorePlayer(),
         numberOfTry: game.getNumberOfTry(),
         knowWord : game.getWord(),
         lettersTried : game.getLettersTried()
