@@ -52,7 +52,11 @@ class Game {
     guess(oneLetter) {
         this.lettersTried.push(oneLetter);
         if(this.word.includes(oneLetter)) {
-            this.unknowWord = tools.replaceAt(this.unknowWord, this.word.indexOf(oneLetter), oneLetter);
+            for (let i = 0; i < this.word.length; i++){
+                if(i === this.word.indexOf(oneLetter,i)){
+                    this.unknowWord = tools.replaceAt(this.unknowWord, this.word.indexOf(oneLetter,i), oneLetter);
+                }
+            }
             return true
         }
         this.numberOfTry--;
