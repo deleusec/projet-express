@@ -6,9 +6,13 @@
 
     <section class="cd-c-Content">
         <% if (inGame) { %>
-        <%- include('./_partials/game') %>
+            <% if (result) { %>
+                <%- include('./game/game_result') %>
+            <% } else {%>
+                <%- include('./game/game') %>
+            <% } %>
         <% } else {%>
-        <%- include('./_partials/game_start') %>
+        <%- include('./game/game_start') %>
         <% } %>
     </section>
 

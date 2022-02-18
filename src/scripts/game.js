@@ -3,14 +3,17 @@ const csvParser = require('csv-parser');
 const fs = require('fs');
 
 const numberOfTry = 10;
+const wordsToFind = 5;
 
 class Game {
 
     constructor() {
         this.words = [];
+        this.resultPlayer = false;
         this.scorePlayer = 0;
         this.lettersTried = [];
         this.numberOfTry = numberOfTry;
+        this.wordsToFind = wordsToFind;
         this.inGame = false;
 
         fs.createReadStream('./src/files/words_fr.txt')
@@ -27,16 +30,6 @@ class Game {
         });
     }
 
-    chooseWord() {
-        this.word = this.words[tools.getRamdomInt(this.words.length)]
-        this.getWord()
-        this.hideWord()
-    }
-
-    hideWord() {
-        this.unknowWord = this.word.replace(/./g, '_')
-    }
-
     getWord() {
         return this.word;
     }
@@ -49,12 +42,30 @@ class Game {
         return this.numberOfTry;
     }
 
+    getWordsToFind() {
+        return this.wordsToFind;
+    }
+
     getScorePlayer() {
         return this.scorePlayer;
     }
 
     getGameStatus() {
         return this.inGame;
+    }
+
+    GameStatus(status) {
+        return this.inGame = status;
+    }
+
+    chooseWord() {
+        this.word = this.words[tools.getRamdomInt(this.words.length)]
+        this.hideWord()
+        console.log(this.word)
+    }
+
+    hideWord() {
+        this.unknowWord = this.word.replace(/./g, '_')
     }
 
     print() {
@@ -71,13 +82,23 @@ class Game {
             }
             if(this.unknowWord === this.word){
                 this.scorePlayer++;
-                this.reset();
+                this.wordsToFind--;
+                if(this.wordsToFind <= 0){
+                    this.result(true);
+                } else {
+                    this.reset();
+                }
             }
             return true
         }
         this.numberOfTry--;
         if (this.numberOfTry <= 0) {
-            this.reset();
+            this.wordsToFind--;
+            if(this.wordsToFind <= 0){
+                this.result(true);
+            } else {
+                this.reset();
+            }
         }
         return false
     }
@@ -90,14 +111,29 @@ class Game {
     }
 
     start() {
-        this.inGame = true;
+        this.resultPlayer = false;
+        this.wordsToFind = wordsToFind;
+        this.scorePlayer = 0;
+        this.GameStatus(true);
         this.reset();
     }
 
     leave() {
-        this.inGame = false;
         this.reset();
+        this.GameStatus(false);
         this.scorePlayer = 0;
+    }
+
+    getResult() {
+        return this.resultPlayer;
+    }
+
+    result(end) {
+        if (end){
+            this.resultPlayer = this.scorePlayer+"/"+ wordsToFind
+            return true
+        }
+        return false
     }
 }
 

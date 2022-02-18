@@ -61,13 +61,18 @@ body {
     border: 1px solid #38dc8a;
     box-sizing: border-box;
     transition: 200ms cubic-bezier(0.59, 0.44, 0.52, 0.95); }
+  .cd-c-Btn[cd-leave] {
+    border: 1px solid #ce2929;
+    background: #ce2929; }
+    .cd-c-Btn[cd-leave]:hover {
+      background: none; }
 
 .cd-c-Game-title {
   text-align: center;
   padding: 25px 0; }
 
 .cd-c-Game-tries {
-  padding-bottom: 15px;
+  margin-bottom: 15px;
   font-size: 18px; }
   .cd-c-Game-tries span {
     color: #38dc8a;
@@ -84,11 +89,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 20px; }
-  .cd-c-Game-buttons [cd-leave] {
-    border: 1px solid #ce2929;
-    background: #ce2929; }
-    .cd-c-Game-buttons [cd-leave]:hover {
-      background: none; }
 
 .cd-c-Game-score {
   display: block;
@@ -123,10 +123,10 @@ body {
   border-radius: 5px;
   cursor: pointer;
   outline: inherit;
-  transition: 200ms ease-in-out; }
+  transition: 100ms ease-in-out; }
   .cd-c-Game-letter:hover {
     color: #38dc8a;
-    transition: 200ms ease-in-out; }
+    transition: 100ms ease-in-out; }
   .cd-c-Game-letter:disabled {
     color: #7e7e7e; }
   .cd-c-Game-letter:last-child {
@@ -145,6 +145,29 @@ body {
 .cd-c-GameStart-text {
   margin-bottom: 40px;
   text-align: center; }
+
+.cd-c-GameResult-box {
+  max-width: 600px;
+  padding: 40px;
+  box-sizing: border-box;
+  border: 1px solid #38dc8a;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.cd-c-GameResult-text {
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 18px; }
+  .cd-c-GameResult-text span {
+    color: #38dc8a;
+    font-size: 25px; }
+
+.cd-c-GameResult-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; }
 
 /* COMPONENTS */
 .cd-u-hspace {

@@ -5,7 +5,7 @@
   }
 
   &-tries {
-    padding-bottom: 15px;
+    margin-bottom: 15px;
     font-size: 18px;
 
     span {
@@ -26,15 +26,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-
-    & [cd-leave] {
-      border: 1px solid $color_red;
-      background: $color_red;
-
-      &:hover {
-        background: none;
-      }
-    }
   }
 
   &-score {
@@ -79,11 +70,11 @@
     cursor: pointer;
     outline: inherit;
 
-    transition: 200ms ease-in-out;
+    transition: 100ms ease-in-out;
 
     &:hover {
       color: $color_green;
-      transition: 200ms ease-in-out;
+      transition: 100ms ease-in-out;
     }
 
     &:disabled {

@@ -16,9 +16,20 @@
   transition: 200ms cubic-bezier(.59,.44,.52,.95);
 
   &:hover {
-    background: none;
-    border: 1px solid $color_green;
-    box-sizing: border-box;
-    transition: 200ms cubic-bezier(.59,.44,.52,.95);
+  background: none;
+  border: 1px solid $color_green;
+  box-sizing: border-box;
+  transition: 200ms cubic-bezier(.59,.44,.52,.95);
+}
+
+  &[cd-leave] {
+    border: 1px solid $color_red;
+    background: $color_red;
+
+    &:hover {
+      background: none;
+    }
   }
+
+
 }

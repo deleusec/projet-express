@@ -2,9 +2,18 @@ const Game = require('../src/scripts/game');
 const assert = require('assert').strict;
 
 let game = new Game();
+
 game.word = "damien";
 
 describe("Game Test", function() {
+
+    it("Game status should be false at the beginning", function() {
+        assert.equal(game.getGameStatus(), false);
+    });
+
+    it("The number of words to find should be 5", function() {
+        assert.equal(game.getWordsToFind(), false);
+    });
 
     it("should show only '_' character", function() {
         game.hideWord();
@@ -24,39 +33,37 @@ describe("Game Test", function() {
         assert.equal(game.print(), "_a____")
     });
 
-    it("should be 5 try at the beginning of the game", function() {
+    it("should be 10 try at the beginning of the game", function() {
         game.word = "damien"
-        game.guess("d");
-        assert.deepEqual(game.getNumberOfTry(), 5);
+        game.hideWord();
+        game.guess("a");
+        assert.deepEqual(game.getNumberOfTry(), 10);
     });
 
     it("test the try mechanic with a right guess", function() {
         game.word = "damien"
+        game.hideWord();
         game.guess('a')
-        assert.deepEqual(game.getNumberOfTry(), 5);
+        assert.deepEqual(game.getNumberOfTry(), 10);
     });
 
     it("test the try mechanic with a wrong guess", function() {
         game.word = "damien"
+        game.hideWord();
         game.guess('c')
-        assert.deepEqual(game.getNumberOfTry(), 4);
+        assert.deepEqual(game.getNumberOfTry(), 9);
     });
 
     it("reset the game, so the number of try should be 5", function() {
-        game.word = "damien"
         game.reset();
-        assert.equal(game.getNumberOfTry(), 5)
+        assert.equal(game.getNumberOfTry(), 10)
     });
 
     it("Save letters already tried", function() {
-        game.word = "damien"
+        game.lettersTried = []
         game.guess("a");
         let result = ['a']
         assert.deepEqual(game.getLettersTried(), result);
-    });
-
-    it("Game status should be false at the beginning", function() {
-        assert.equal(game.getGameStatus(), false);
     });
 
     it("Game status should be false when we leave the game", function() {
@@ -64,7 +71,7 @@ describe("Game Test", function() {
         assert.equal(game.getGameStatus(), false);
     });
 
-    it("Game status should be false when we start the game", function() {
+    it("Game status should be true when we start the game", function() {
         game.start();
         assert.equal(game.getGameStatus(), true);
     });

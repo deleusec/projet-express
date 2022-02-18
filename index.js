@@ -28,6 +28,7 @@ app.get('/', (request, response) => {
         game : undefined,
         inGame : false,
         score : game.getScorePlayer(),
+        result : undefined,
         numberOfTry: game.getNumberOfTry(),
         knowWord : undefined,
         lettersTried : game.getLettersTried()
@@ -52,6 +53,7 @@ app.post('/',(request, response) => {
         score : game.getScorePlayer(),
         numberOfTry: game.getNumberOfTry(),
         knowWord : game.getWord(),
+        result : game.getResult(),
         lettersTried : game.getLettersTried()
     });
 })

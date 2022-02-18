@@ -1,0 +1,30 @@
+.cd-c-GameResult {
+
+  &-box {
+    max-width: 600px;
+    padding: 40px;
+    box-sizing: border-box;
+    border: 1px solid $color_green;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-text {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 18px;
+
+    span {
+      color: $color_green;
+      font-size: 25px;
+    }
+  }
+
+  &-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
