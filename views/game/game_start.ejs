@@ -1,8 +1,13 @@
 <div class="cd-c-GameStart cd-u-hspace">
     <div class="cd-u-wrapper">
         <div class="cd-c-GameStart-box">
-            <p class="cd-c-GameStart-text">Appuyer sur le bouton pour commencer une partie</p>
+            <p class="cd-c-GameStart-text">Choisissez un niveau de difficulté et commencez à jouer</p>
             <form action="/" method="post">
+                <select class="cd-c-GameStart-options" name="level" id="level">
+                    <option class="cd-c-GameStart-option" value="1" cd-level="easy">Easy</option>
+                    <option class="cd-c-GameStart-option" value="2" cd-level="normal">Normal</option>
+                    <option class="cd-c-GameStart-option" value="3" cd-level="hard">Hard</option>
+                </select>
                 <button class="cd-c-Btn" type="submit" name="start" value="true">
                     Start
                 </button>

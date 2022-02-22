@@ -4,18 +4,18 @@ const fs = require('fs');
 
 const numberOfTry = 10;
 const wordsToFind = 5;
-const countDown = 30;
 
-class Game {
+    class Game {
 
     constructor() {
         this.words = [];
+        this.wordsByLevels = [];
         this.resultPlayer = false;
         this.scorePlayer = 0;
+        this.difficultyLevel = "1";
         this.lettersTried = [];
         this.numberOfTry = numberOfTry;
         this.wordsToFind = wordsToFind;
-        this.countDown = countDown;
         this.inGame = false;
 
         fs.createReadStream('./src/files/liste_francais.txt')
@@ -44,8 +44,8 @@ class Game {
         return this.numberOfTry;
     }
 
-    getCountDown(){
-        return this.countDown;
+    getDifficultyLevel() {
+        return this.difficultyLevel;
     }
 
     getWordsToFind() {
@@ -65,7 +65,24 @@ class Game {
     }
 
     chooseWord() {
-        this.word = this.words[tools.getRamdomInt(this.words.length)]
+
+        this.words.forEach(element => {
+            if (this.difficultyLevel === "1"){
+                if (element.length <= 6) {
+                    this.wordsByLevels.push(element)
+                }
+            } else if (this.difficultyLevel === "2") {
+                if (element.length > 6 && element.length < 10) {
+                    this.wordsByLevels.push(element)
+                }
+            } else if (this.difficultyLevel === "3") {
+                if (element.length >= 10) {
+                    this.wordsByLevels.push(element)
+                }
+            }
+        })
+
+        this.word = this.wordsByLevels[tools.getRamdomInt(this.wordsByLevels.length)]
         this.hideWord()
     }
 
@@ -111,18 +128,16 @@ class Game {
 
     reset() {
         this.numberOfTry = numberOfTry;
-        this.countDown = countDown;
         this.lettersTried = [];
         this.chooseWord();
-        console.log(this.word);
-        return this.numberOfTry;
     }
 
-    start() {
+    start(level="1") {
         this.resultPlayer = false;
         this.wordsToFind = wordsToFind;
-        this.countDown = countDown;
         this.scorePlayer = 0;
+        this.wordsByLevels = [];
+        this.difficultyLevel = level;
         this.GameStatus(true);
         this.reset();
     }
@@ -130,6 +145,7 @@ class Game {
     leave() {
         this.reset();
         this.GameStatus(false);
+        this.wordsByLevels = [];
         this.scorePlayer = 0;
     }
 
@@ -140,7 +156,6 @@ class Game {
     result() {
         this.resultPlayer = this.scorePlayer+"/"+ wordsToFind
     }
-
 
 }
 

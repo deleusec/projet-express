@@ -42,6 +42,14 @@ body {
   background-color: #020910;
   color: #ffffff; }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+
+select::-ms-expand {
+  display: none; }
+
 /* COMPONENTS */
 .cd-c-Btn {
   font-family: sans-serif;
@@ -132,6 +140,12 @@ body {
   .cd-c-Game-letter:last-child {
     margin-right: auto; }
 
+@media screen and (max-width: 999px) {
+  .cd-c-Game-score {
+    position: relative;
+    top: 0;
+    right: 0; } }
+
 .cd-c-GameStart-box {
   padding: 40px;
   max-width: 600px;
@@ -140,11 +154,46 @@ body {
   margin: auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.cd-c-GameStart form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center; }
 
 .cd-c-GameStart-text {
   margin-bottom: 40px;
   text-align: center; }
+
+.cd-c-GameStart select {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 40px;
+  display: block;
+  border-radius: 0 !important;
+  outline: none;
+  min-height: 50px;
+  padding: 10px 20px;
+  font-size: 15px;
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid #7e7e7e; }
+  .cd-c-GameStart select:focus {
+    border: 1px solid #ffffff; }
+  .cd-c-GameStart select option {
+    display: block;
+    min-height: 50px;
+    padding: 10px 20px;
+    border-radius: 0;
+    background-color: #020910; }
+    .cd-c-GameStart select option[cd-level="easy"] {
+      color: #38dc8a; }
+    .cd-c-GameStart select option[cd-level="normal"] {
+      color: #d96822; }
+    .cd-c-GameStart select option[cd-level="hard"] {
+      color: #ce2929; }
 
 .cd-c-GameResult-box {
   max-width: 600px;

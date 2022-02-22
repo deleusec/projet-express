@@ -38,7 +38,7 @@ app.get('/', (request, response) => {
 app.post('/',(request, response) => {
 
     if(request.body.start){
-        game.start();
+        game.start(request.body.level);
     } else if (request.body.reset){
         game.reset();
     } else if (request.body.leave) {
@@ -56,4 +56,5 @@ app.post('/',(request, response) => {
         result : game.getResult(),
         lettersTried : game.getLettersTried()
     });
+
 })

@@ -3,3 +3,13 @@ body {
   background-color: $color_dark;
   color: $color_white;
 }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}

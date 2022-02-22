@@ -8,11 +8,60 @@
     margin: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
 
   &-text {
     margin-bottom: 40px;
     text-align: center;
+  }
+
+
+  select {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 40px;
+    display: block;
+    border-radius: 0!important;
+    outline: none;
+    min-height: 50px;
+    padding: 10px 20px;
+    font-size: 15px;
+    color: $color_white;
+    background-color: transparent;
+    border: 1px solid $color_grey;
+
+    &:focus {
+      border: 1px solid $color_white;
+    }
+
+    option {
+      display: block;
+      min-height: 50px;
+      padding: 10px 20px;
+      border-radius: 0;
+      background-color: $color_background;
+
+      &[cd-level ="easy"] {
+        color: $color_green;
+
+      }
+
+      &[cd-level ="normal"] {
+        color: $color_orange;
+      }
+
+      &[cd-level ="hard"] {
+        color: $color_red;
+      }
+    }
   }
 }

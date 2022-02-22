@@ -97,4 +97,15 @@ describe("Game Test", () => {
         assert.equal(game.getScorePlayer(), 0);
     });
 
+    it("by default, the difficulty level is easy", () => {
+        game.start()
+        assert.equal(game.getDifficultyLevel(), "1");
+    });
+
+    it("if the player choose normal difficulty, the return value should be 2", () => {
+        game.start("2")
+        assert.equal(game.getDifficultyLevel(), "2");
+    });
+
+
 });
