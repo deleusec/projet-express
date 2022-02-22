@@ -4,6 +4,7 @@ const fs = require('fs');
 
 const numberOfTry = 10;
 const wordsToFind = 5;
+const countDown = 30;
 
 class Game {
 
@@ -14,9 +15,10 @@ class Game {
         this.lettersTried = [];
         this.numberOfTry = numberOfTry;
         this.wordsToFind = wordsToFind;
+        this.countDown = countDown;
         this.inGame = false;
 
-        fs.createReadStream('./src/files/words_fr.txt')
+        fs.createReadStream('./src/files/liste_francais.txt')
         .on('error', () => {
             // ERROR
         })
@@ -42,6 +44,10 @@ class Game {
         return this.numberOfTry;
     }
 
+    getCountDown(){
+        return this.countDown;
+    }
+
     getWordsToFind() {
         return this.wordsToFind;
     }
@@ -61,7 +67,6 @@ class Game {
     chooseWord() {
         this.word = this.words[tools.getRamdomInt(this.words.length)]
         this.hideWord()
-        console.log(this.word)
     }
 
     hideWord() {
@@ -84,7 +89,7 @@ class Game {
                 this.scorePlayer++;
                 this.wordsToFind--;
                 if(this.wordsToFind <= 0){
-                    this.result(true);
+                    this.result();
                 } else {
                     this.reset();
                 }
@@ -95,8 +100,9 @@ class Game {
         if (this.numberOfTry <= 0) {
             this.wordsToFind--;
             if(this.wordsToFind <= 0){
-                this.result(true);
+                this.result();
             } else {
+
                 this.reset();
             }
         }
@@ -105,14 +111,17 @@ class Game {
 
     reset() {
         this.numberOfTry = numberOfTry;
+        this.countDown = countDown;
         this.lettersTried = [];
         this.chooseWord();
+        console.log(this.word);
         return this.numberOfTry;
     }
 
     start() {
         this.resultPlayer = false;
         this.wordsToFind = wordsToFind;
+        this.countDown = countDown;
         this.scorePlayer = 0;
         this.GameStatus(true);
         this.reset();
@@ -128,13 +137,11 @@ class Game {
         return this.resultPlayer;
     }
 
-    result(end) {
-        if (end){
-            this.resultPlayer = this.scorePlayer+"/"+ wordsToFind
-            return true
-        }
-        return false
+    result() {
+        this.resultPlayer = this.scorePlayer+"/"+ wordsToFind
     }
+
+
 }
 
 module.exports = Game;
