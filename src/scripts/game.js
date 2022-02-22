@@ -12,6 +12,7 @@ const wordsToFind = 5;
         this.wordsByLevels = [];
         this.resultPlayer = false;
         this.scorePlayer = 0;
+        this.showWord = false;
         this.difficultyLevel = "1";
         this.lettersTried = [];
         this.numberOfTry = numberOfTry;
@@ -60,6 +61,10 @@ const wordsToFind = 5;
         return this.inGame;
     }
 
+    getResult() {
+        return this.resultPlayer;
+    }
+
     GameStatus(status) {
         return this.inGame = status;
     }
@@ -88,6 +93,10 @@ const wordsToFind = 5;
 
     hideWord() {
         this.unknowWord = this.word.replace(/./g, '_')
+    }
+
+    getShowWord() {
+        return this.showWord;
     }
 
     print() {
@@ -120,7 +129,7 @@ const wordsToFind = 5;
                 this.result();
             } else {
 
-                this.reset();
+                this.showWord = true;
             }
         }
         return false
@@ -129,6 +138,7 @@ const wordsToFind = 5;
     reset() {
         this.numberOfTry = numberOfTry;
         this.lettersTried = [];
+        this.showWord = false;
         this.chooseWord();
     }
 
@@ -149,9 +159,6 @@ const wordsToFind = 5;
         this.scorePlayer = 0;
     }
 
-    getResult() {
-        return this.resultPlayer;
-    }
 
     result() {
         this.resultPlayer = this.scorePlayer+"/"+ wordsToFind

@@ -5,9 +5,8 @@
         <p class="cd-c-Game-tries">You have <span><%= numberOfTry  %></span> tries left</p>
 
         <div class="cd-c-Game-score">Score : <%= score  %></div>
-        <% if(game) { %>
+        <% if(game && !showWord) { %>
             <p class="cd-c-Game-hiddenWord"><%= game %></p>
-        <% } %>
 
         <form action="/" method="post">
 
@@ -33,6 +32,16 @@
             </div>
 
         </form>
+
+        <% } else if (showWord) { %>
+            <p>You lost, shame on you...</p>
+            <p class="cd-c-Game-hiddenWord"><%= knowWord %></p>
+            <form action="/" method="post">
+                <div class="cd-c-Game-buttons">
+                    <button class="cd-c-Btn" type="submit" name="reset" value="true">Continuer</button>
+                </div>
+            </form>
+        <% } %>
 
         <script>
             document.addEventListener('keydown', (event) => {
