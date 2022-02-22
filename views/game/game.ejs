@@ -20,6 +20,7 @@
                             class="cd-c-Game-letter"
                     <% if(lettersTried.includes(letter)) { %> disabled<% } %>
                             name="word"
+                            id="letter-<%= letter %>"
                             value="<%= letter %>">
                         <%= letter %>
                     </button>
@@ -33,5 +34,10 @@
 
         </form>
 
+        <script>
+            document.addEventListener('keydown', (event) => {
+                document.getElementById('letter-'+event.key)?.click()
+            })
+        </script>
     </div>
 </div>
